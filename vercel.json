@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/index.ts",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "client/dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/jobs/(.*)",
+      "dest": "api/index.ts"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "api/index.ts"
+    },
+    {
+      "src": "/socket.io/(.*)",
+      "dest": "api/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "client/dist/$1"
+    }
+  ],
+  "crons": [
+    {
+      "path": "/api/jobs/overdue",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}

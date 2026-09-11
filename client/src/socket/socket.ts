@@ -33,7 +33,8 @@ export const connectSocket = (accessToken: string): Socket => {
     return socketInstance;
   }
 
-  socketInstance = io('/', {
+  const socketUrl = import.meta.env.VITE_SOCKET_URL || '/';
+  socketInstance = io(socketUrl, {
     auth: {
       token: `Bearer ${accessToken}`,
     },
