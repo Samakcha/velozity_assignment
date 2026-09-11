@@ -1,5 +1,5 @@
-import { PrismaClient, UserRole, TaskStatus, TaskPriority, NotificationType } from '../server/node_modules/.prisma/client/index.js';
-import bcrypt from '../server/node_modules/bcryptjs/index.js';
+import { PrismaClient, UserRole, TaskStatus, TaskPriority, NotificationType } from '@prisma/client';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
