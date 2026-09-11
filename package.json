@@ -1,0 +1,27 @@
+{
+  "name": "real-time-client-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Real-Time Client Project Dashboard with Role-Based Access & Live Activity Feed",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:server": "npm --prefix server run dev",
+    "dev:client": "npm --prefix client run dev",
+    "build": "npm --prefix server run build && npm --prefix client run build",
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install",
+    "prisma:generate": "npx prisma generate",
+    "prisma:validate": "npx prisma validate",
+    "db:seed": "npx prisma db seed"
+  },
+  "prisma": {
+    "seed": "npx tsx prisma/seed.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prisma": "^6.4.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.4.1"
+  }
+}
